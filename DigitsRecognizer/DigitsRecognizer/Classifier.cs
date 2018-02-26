@@ -5,14 +5,34 @@ namespace DigitsRecognizer
 {
     public class Classifier : IClassifier
     {
+		private IEnumerable<Observation> data;
+		private readonly IDistance distance;
+
+		public Classifier(IDistance distance)
+		{
+			this.distance = distance;
+		}
+	
         public string Predict(int[] Pixels)
         {
-            throw new NotImplementedException();
+			Observation currentBest = null;
+			var shortest = Double.MaxValue;
+			foreach (Observation observation in data)
+			{
+				var dis = distance.Between(observation.Pixels, Pixels);
+				if(dis < shortest)
+				{
+					shortest = dis;
+					currentBest = observation;
+				}
+			}
+
+			return currentBest.Label;
         }
 
         public void Train(IEnumerable<Observation> TrainingSet)
         {
-            throw new NotImplementedException();
+			this.data = TrainingSet;
         }
     }
 }

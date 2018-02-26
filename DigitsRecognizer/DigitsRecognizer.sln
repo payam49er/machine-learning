@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitsRecognizer", "DigitsRecognizer\DigitsRecognizer.csproj", "{F792893C-D108-4E38-A91C-9863A646DE1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitsRecognizer", "DigitsRecognizer\DigitsRecognizer.csproj", "{F792893C-D108-4E38-A91C-9863A646DE1E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp", "FSharp\FSharp.fsproj", "{6B99EF86-8B57-479B-988B-27E43DB5D2FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F792893C-D108-4E38-A91C-9863A646DE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F792893C-D108-4E38-A91C-9863A646DE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F792893C-D108-4E38-A91C-9863A646DE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B99EF86-8B57-479B-988B-27E43DB5D2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B99EF86-8B57-479B-988B-27E43DB5D2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B99EF86-8B57-479B-988B-27E43DB5D2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B99EF86-8B57-479B-988B-27E43DB5D2FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
