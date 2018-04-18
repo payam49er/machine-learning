@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace DigitsRecognizer
 {
@@ -6,22 +7,49 @@ namespace DigitsRecognizer
     {
         static void Main(string[] args)
         {
-			Distance distance = new Distance();
-			var classifier = new Classifier(distance);
+            try
+            {
+                var trainingPath = Paths.TrainingPath;
+                var validationPath = Paths.ValidationPath;
+           
+                Distance distance = new Distance();
+                var classifier = new Classifier(distance);
 
-			var trainingPath = @"C:\Code\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\Data\trainingsample.csv";
 
-			var training = DataReader.ReadObservations(trainingPath);
-			classifier.Train(training);
+                var training = DataReader.ReadObservations(trainingPath);
+                classifier.Train(training);
 
-			var validationPath = @"C:\Code\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\Data\validationsample.csv";
-			var validation = DataReader.ReadObservations(validationPath);
+            
+                var validation = DataReader.ReadObservations(validationPath);
 
-	        var correct = Evaluator.Evaluator.Correct(validation, classifier);
+                var correct = Evaluator.Evaluator.Correct(validation, classifier);
 
-			Console.WriteLine($"Correctly classified: {correct}");
+                Console.WriteLine($"Correctly classified: {correct}");
 
-	        Console.Read();
+                Console.Read();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
+        }
+
+        private static (string TrainingPath, string ValidationPath) Paths
+        {
+            get
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    return (trainingPath: Constants.OsxTrainingPath, validationPath: Constants.OsxValidationPath);
+                }
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    return (trainingPath: Constants.WindowsTrainingPath, validationPath: Constants.WindowsValidationPath);
+                }
+                return (first: string.Empty, second: string.Empty);
+            }
         }
     }
 }
